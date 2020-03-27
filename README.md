@@ -1,5 +1,3 @@
-# my site
-is still pretty good but getting worse
-
+# murphy's site
 
 hey sara :)
