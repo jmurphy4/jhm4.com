@@ -1,2 +1,2 @@
-# my-site
+# my site
 is still pretty good but getting worse
