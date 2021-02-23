@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/React-Deploy/static/css/main.8c8b27cf.chunk.css",
-    "main.js": "/React-Deploy/static/js/main.56574dc6.chunk.js",
-    "main.js.map": "/React-Deploy/static/js/main.56574dc6.chunk.js.map",
-    "runtime-main.js": "/React-Deploy/static/js/runtime-main.28e5981c.js",
-    "runtime-main.js.map": "/React-Deploy/static/js/runtime-main.28e5981c.js.map",
-    "static/js/2.41c4005a.chunk.js": "/React-Deploy/static/js/2.41c4005a.chunk.js",
-    "static/js/2.41c4005a.chunk.js.map": "/React-Deploy/static/js/2.41c4005a.chunk.js.map",
-    "static/js/3.44a98da0.chunk.js": "/React-Deploy/static/js/3.44a98da0.chunk.js",
-    "static/js/3.44a98da0.chunk.js.map": "/React-Deploy/static/js/3.44a98da0.chunk.js.map",
-    "index.html": "/React-Deploy/index.html",
-    "static/css/main.8c8b27cf.chunk.css.map": "/React-Deploy/static/css/main.8c8b27cf.chunk.css.map",
-    "static/js/2.41c4005a.chunk.js.LICENSE.txt": "/React-Deploy/static/js/2.41c4005a.chunk.js.LICENSE.txt",
-    "static/media/logo.6ce24c58.svg": "/React-Deploy/static/media/logo.6ce24c58.svg"
+    "main.css": "/jhm4.com/static/css/main.8c8b27cf.chunk.css",
+    "main.js": "/jhm4.com/static/js/main.56574dc6.chunk.js",
+    "main.js.map": "/jhm4.com/static/js/main.56574dc6.chunk.js.map",
+    "runtime-main.js": "/jhm4.com/static/js/runtime-main.cbc8080e.js",
+    "runtime-main.js.map": "/jhm4.com/static/js/runtime-main.cbc8080e.js.map",
+    "static/js/2.41c4005a.chunk.js": "/jhm4.com/static/js/2.41c4005a.chunk.js",
+    "static/js/2.41c4005a.chunk.js.map": "/jhm4.com/static/js/2.41c4005a.chunk.js.map",
+    "static/js/3.44a98da0.chunk.js": "/jhm4.com/static/js/3.44a98da0.chunk.js",
+    "static/js/3.44a98da0.chunk.js.map": "/jhm4.com/static/js/3.44a98da0.chunk.js.map",
+    "index.html": "/jhm4.com/index.html",
+    "static/css/main.8c8b27cf.chunk.css.map": "/jhm4.com/static/css/main.8c8b27cf.chunk.css.map",
+    "static/js/2.41c4005a.chunk.js.LICENSE.txt": "/jhm4.com/static/js/2.41c4005a.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/jhm4.com/static/media/logo.6ce24c58.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.28e5981c.js",
+    "static/js/runtime-main.cbc8080e.js",
     "static/js/2.41c4005a.chunk.js",
     "static/css/main.8c8b27cf.chunk.css",
     "static/js/main.56574dc6.chunk.js"
