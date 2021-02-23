@@ -13,10 +13,6 @@ function App() {
           Learn React
         </a>
       </header>
-
-      <div>
-        <span> This is Murphy</span>
-      </div>
     </div>
   );
 }
