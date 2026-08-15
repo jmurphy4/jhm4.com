@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jhm4.com/sitemap.xml
+Sitemap: https://www.jhm4.com/sitemap.xml
