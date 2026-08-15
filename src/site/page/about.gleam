@@ -7,6 +7,7 @@ pub fn view() -> Element(Nil) {
   layout.view(
     "About",
     "/about/",
+    "/about/",
     html.main([attribute.class("page prose-page")], [
       html.p([attribute.class("eyebrow")], [html.text("ABOUT")]),
       html.h1([], [html.text("A person behind the screen.")]),

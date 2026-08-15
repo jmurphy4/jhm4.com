@@ -7,6 +7,7 @@ pub fn view() -> Element(Nil) {
   layout.view(
     "Home",
     "/",
+    "/",
     html.main([attribute.class("page home-page")], [
       html.section([attribute.class("intro")], [
         html.p([attribute.class("eyebrow")], [html.text("HELLO, I'M MURPHY")]),

@@ -18,6 +18,7 @@ pub fn view(post: Post) -> Element(Nil) {
   layout.view(
     post.title,
     "/blog/",
+    "/blog/" <> post.slug <> "/",
     html.main([attribute.class("page post-page")], [
       html.article([], [
         html.header([attribute.class("post-header")], [
