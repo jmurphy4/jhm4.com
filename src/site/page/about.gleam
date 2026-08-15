@@ -33,12 +33,24 @@ pub fn view() -> Element(Nil) {
           ]),
           html.p([], [
             html.text(
-              "I studied computer science at Georgia Tech. After graduating I went to Washington D.C. then Florida, and I'm now based in Richmond, Virginia. This site is a place to share what I'm working on, what I'm learning, and random musings (eventually).",
+              "I studied computer science at Georgia Tech. After graduating, I moved to Washington D.C. then Florida, and I'm now based in Richmond, Virginia. This site is a place to share what I'm working on, what I'm learning, and random musings (eventually).",
             ),
           ]),
           html.p([], [
             html.text(
-              "Away from a keyboard, I appreciate spending time with good friends, sailing my Harpoon 5.2, riding horses, and projects that take me away from the keyboard 😉",
+              "Away from a keyboard, I appreciate spending time with good friends, sailing my ",
+            ),
+            html.a(
+              [
+                attribute.attribute(
+                  "href",
+                  "https://sailboatdata.com/sailboat/harpoon-52/",
+                ),
+              ],
+              [html.text("Harpoon 5.2")],
+            ),
+            html.text(
+              ", riding horses, and projects that take me away from the keyboard 😉",
             ),
           ]),
         ]),
