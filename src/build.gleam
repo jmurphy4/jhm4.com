@@ -5,8 +5,11 @@ import simplifile
 import site/feed
 import site/page/about
 import site/page/blog
+import site/page/gear
 import site/page/home
 import site/page/post as post_page
+import site/page/projects
+import site/page/resume
 import site/post
 
 pub fn main() {
@@ -17,6 +20,9 @@ pub fn main() {
   write_page("./dist", "./dist/index.html", home.view())
   write_page("./dist/about", "./dist/about/index.html", about.view())
   write_page("./dist/blog", "./dist/blog/index.html", blog.view())
+  write_page("./dist/gear", "./dist/gear/index.html", gear.view())
+  write_page("./dist/projects", "./dist/projects/index.html", projects.view())
+  write_page("./dist/resume", "./dist/resume/index.html", resume.view())
   let assert Ok(_) =
     simplifile.write(to: "./dist/atom.xml", contents: feed.atom())
 

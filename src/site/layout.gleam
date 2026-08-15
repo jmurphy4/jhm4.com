@@ -47,13 +47,13 @@ pub fn view(
       ]),
       html.meta([
         attribute.attribute("property", "og:url"),
-        attribute.attribute("content", "https://jhm4.com" <> page_path),
+        attribute.attribute("content", "https://www.jhm4.com" <> page_path),
       ]),
       html.meta([
         attribute.attribute("property", "og:image"),
         attribute.attribute(
           "content",
-          "https://jhm4.com/social-preview.png",
+          "https://www.jhm4.com/social-preview.png",
         ),
       ]),
       html.meta([
@@ -119,11 +119,28 @@ fn site_header(active_path: String) -> Element(Nil) {
       html.a(nav_attributes("/", active_path == "/"), [
         html.span([class("site-name")], [html.text("JM")]),
       ]),
-      html.div([class("nav-links")], [
-        nav_link("/", "Home", active_path),
-        nav_link("/about/", "About", active_path),
-        nav_link("/blog/", "Blog", active_path),
-      ]),
+      html.button(
+        [
+          class("menu-toggle"),
+          attribute.attribute("type", "button"),
+          attribute.attribute("id", "menu-toggle"),
+          attribute.attribute("aria-controls", "primary-links"),
+          attribute.attribute("aria-expanded", "false"),
+          attribute.attribute("aria-label", "Open navigation menu"),
+        ],
+        [html.span([], []), html.span([], []), html.span([], [])],
+      ),
+      html.div(
+        [class("nav-links"), attribute.attribute("id", "primary-links")],
+        [
+          nav_link("/", "Home", active_path),
+          nav_link("/about/", "About", active_path),
+          nav_link("/projects/", "Projects", active_path),
+          nav_link("/resume/", "Resume", active_path),
+          nav_link("/gear/", "Gear", active_path),
+          nav_link("/blog/", "Blog", active_path),
+        ],
+      ),
     ]),
   ])
 }
@@ -167,9 +184,12 @@ fn social_title(title: String, active_path: String) -> String {
   case active_path {
     "/" -> "Murphy's Site"
     "/about/" -> "About Murphy"
+    "/projects/" -> "Murphy's Projects"
+    "/resume/" -> "Murphy's Resume"
+    "/gear/" -> "Murphy's Gear"
     "/blog/" -> "Murphy's Blog"
     _ -> title
   }
 }
 
-const browser_script = "try{const key='boat-voyage-start',duration=38000,now=Date.now();let start=Number(sessionStorage.getItem(key));if(!start||start>now){start=now;sessionStorage.setItem(key,String(start))}const elapsed=(now-start)%duration;document.documentElement.style.setProperty('--sail-delay',`${-elapsed}ms`)}catch(_){}document.addEventListener('DOMContentLoaded',()=>{const year=document.getElementById('copyright-year');if(year)year.textContent=String(new Date().getFullYear())})"
+const browser_script = "try{const key='boat-voyage-start',duration=38000,now=Date.now();let start=Number(sessionStorage.getItem(key));if(!start||start>now){start=now;sessionStorage.setItem(key,String(start))}const elapsed=(now-start)%duration;document.documentElement.style.setProperty('--sail-delay',`${-elapsed}ms`)}catch(_){}document.addEventListener('DOMContentLoaded',()=>{const year=document.getElementById('copyright-year');if(year)year.textContent=String(new Date().getFullYear());const toggle=document.getElementById('menu-toggle'),links=document.getElementById('primary-links');if(toggle&&links){toggle.addEventListener('click',()=>{const open=links.classList.toggle('is-open');toggle.classList.toggle('is-open',open);toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu')})}})"
