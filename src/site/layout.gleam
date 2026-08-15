@@ -25,12 +25,58 @@ pub fn view(
           "John Murphy's personal site and logbook.",
         ),
       ]),
+      html.meta([
+        attribute.attribute("property", "og:title"),
+        attribute.attribute("content", title),
+      ]),
+      html.meta([
+        attribute.attribute("property", "og:description"),
+        attribute.attribute(
+          "content",
+          "John Murphy's personal site and logbook.",
+        ),
+      ]),
+      html.meta([
+        attribute.attribute("property", "og:site_name"),
+        attribute.attribute("content", "John Murphy"),
+      ]),
+      html.meta([
+        attribute.attribute("property", "og:type"),
+        attribute.attribute("content", "website"),
+      ]),
+      html.meta([
+        attribute.attribute("property", "og:url"),
+        attribute.attribute("content", "https://jhm4.com" <> active_path),
+      ]),
+      html.meta([
+        attribute.attribute("property", "og:image"),
+        attribute.attribute(
+          "content",
+          "https://jhm4.com/social-preview.png",
+        ),
+      ]),
+      html.meta([
+        attribute.attribute("property", "og:image:width"),
+        attribute.attribute("content", "1200"),
+      ]),
+      html.meta([
+        attribute.attribute("property", "og:image:height"),
+        attribute.attribute("content", "630"),
+      ]),
+      html.meta([
+        attribute.attribute("property", "og:image:alt"),
+        attribute.attribute("content", "A sailboat crossing calm blue waves"),
+      ]),
       html.title([], title <> " · John Murphy"),
       html.script([], browser_script),
       html.link([
         attribute.attribute("rel", "icon"),
         attribute.attribute("type", "image/svg+xml"),
         attribute.attribute("href", "/favicon.svg?v=2"),
+      ]),
+      html.link([
+        attribute.attribute("rel", "apple-touch-icon"),
+        attribute.attribute("href", "/apple-touch-icon.png"),
       ]),
       html.link([
         attribute.attribute("rel", "stylesheet"),
