@@ -24,6 +24,11 @@ pub fn view(
       html.title([], title <> " · John Murphy"),
       html.script([], browser_script),
       html.link([
+        attribute.attribute("rel", "icon"),
+        attribute.attribute("type", "image/svg+xml"),
+        attribute.attribute("href", "/favicon.svg"),
+      ]),
+      html.link([
         attribute.attribute("rel", "stylesheet"),
         attribute.attribute("href", "/styles.css"),
       ]),
@@ -48,7 +53,7 @@ fn site_header(active_path: String) -> Element(Nil) {
             html.div([class("sailboat")], [
               html.span([class("mast")], []),
               html.span([class("sail sail-main")], []),
-              html.span([class("sail sail-jib")], []),
+              html.span([class("sail sail-spinnaker")], []),
               html.span([class("hull")], []),
               html.span([class("boat-wave wave-one")], []),
               html.span([class("boat-wave wave-two")], []),
