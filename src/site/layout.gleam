@@ -1,6 +1,7 @@
 import lustre/attribute
 import lustre/element.{type Element}
 import lustre/element/html
+import lustre/element/svg
 
 pub fn view(
   title: String,
@@ -140,20 +141,24 @@ fn site_header(active_path: String) -> Element(Nil) {
             attribute.attribute("aria-label", "Switch color theme"),
           ],
           [
-            html.span(
-              [
-                class("theme-icon theme-moon"),
-                attribute.attribute("aria-hidden", "true"),
-              ],
-              [html.text("☾")],
-            ),
-            html.span(
-              [
-                class("theme-icon theme-sun"),
-                attribute.attribute("aria-hidden", "true"),
-              ],
-              [html.text("☀")],
-            ),
+            svg.svg(icon_attributes("theme-icon theme-moon"), [
+              svg.path([
+                attribute.attribute("d", "M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"),
+              ]),
+            ]),
+            svg.svg(icon_attributes("theme-icon theme-sun"), [
+              svg.circle([
+                attribute.attribute("cx", "12"),
+                attribute.attribute("cy", "12"),
+                attribute.attribute("r", "4"),
+              ]),
+              svg.path([
+                attribute.attribute(
+                  "d",
+                  "M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.42",
+                ),
+              ]),
+            ]),
           ],
         ),
         html.button(
@@ -213,6 +218,19 @@ fn site_footer() -> Element(Nil) {
 
 fn class(value: String) -> attribute.Attribute(msg) {
   attribute.class(value)
+}
+
+fn icon_attributes(icon_class: String) -> List(attribute.Attribute(Nil)) {
+  [
+    class(icon_class),
+    attribute.attribute("aria-hidden", "true"),
+    attribute.attribute("viewBox", "0 0 24 24"),
+    attribute.attribute("fill", "none"),
+    attribute.attribute("stroke", "currentColor"),
+    attribute.attribute("stroke-width", "2"),
+    attribute.attribute("stroke-linecap", "round"),
+    attribute.attribute("stroke-linejoin", "round"),
+  ]
 }
 
 fn social_title(title: String, active_path: String) -> String {
