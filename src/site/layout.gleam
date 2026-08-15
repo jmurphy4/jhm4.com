@@ -26,7 +26,7 @@ pub fn view(
       html.link([
         attribute.attribute("rel", "icon"),
         attribute.attribute("type", "image/svg+xml"),
-        attribute.attribute("href", "/favicon.svg"),
+        attribute.attribute("href", "/favicon.svg?v=2"),
       ]),
       html.link([
         attribute.attribute("rel", "stylesheet"),
