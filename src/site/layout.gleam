@@ -5,6 +5,7 @@ import lustre/element/html
 pub fn view(
   title: String,
   active_path: String,
+  page_path: String,
   content: Element(Nil),
 ) -> Element(Nil) {
   html.html([attribute.attribute("lang", "en")], [
@@ -27,7 +28,7 @@ pub fn view(
       ]),
       html.meta([
         attribute.attribute("property", "og:title"),
-        attribute.attribute("content", title),
+        attribute.attribute("content", social_title(title, page_path)),
       ]),
       html.meta([
         attribute.attribute("property", "og:description"),
@@ -46,7 +47,7 @@ pub fn view(
       ]),
       html.meta([
         attribute.attribute("property", "og:url"),
-        attribute.attribute("content", "https://jhm4.com" <> active_path),
+        attribute.attribute("content", "https://jhm4.com" <> page_path),
       ]),
       html.meta([
         attribute.attribute("property", "og:image"),
@@ -160,6 +161,15 @@ fn site_footer() -> Element(Nil) {
 
 fn class(value: String) -> attribute.Attribute(msg) {
   attribute.class(value)
+}
+
+fn social_title(title: String, active_path: String) -> String {
+  case active_path {
+    "/" -> "Murphy's Site"
+    "/about/" -> "About Murphy"
+    "/blog/" -> "Murphy's Blog"
+    _ -> title
+  }
 }
 
 const browser_script = "try{const key='boat-voyage-start',duration=38000,now=Date.now();let start=Number(sessionStorage.getItem(key));if(!start||start>now){start=now;sessionStorage.setItem(key,String(start))}const elapsed=(now-start)%duration;document.documentElement.style.setProperty('--sail-delay',`${-elapsed}ms`)}catch(_){}document.addEventListener('DOMContentLoaded',()=>{const year=document.getElementById('copyright-year');if(year)year.textContent=String(new Date().getFullYear())})"

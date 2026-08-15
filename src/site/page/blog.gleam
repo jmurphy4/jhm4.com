@@ -26,6 +26,7 @@ pub fn view() -> Element(Nil) {
   layout.view(
     "Blog",
     "/blog/",
+    "/blog/",
     html.main([attribute.class("page blog-page")], [
       html.p([attribute.class("eyebrow")], [html.text("THE LOGBOOK")]),
       html.h1([], [html.text("Notes from along the way.")]),
