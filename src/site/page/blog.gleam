@@ -36,7 +36,7 @@ pub fn view() -> Element(Nil) {
       ]),
       html.a(
         [attribute.attribute("href", "/atom.xml"), attribute.class("feed-link")],
-        [html.text("Subscribe via Atom ↗")],
+        [html.text("Subscribe via Atom")],
       ),
       html.section([attribute.class("post-list")], entries),
     ]),
