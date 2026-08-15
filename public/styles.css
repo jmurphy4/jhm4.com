@@ -20,9 +20,7 @@ body {
   margin: 0;
   min-height: 100vh;
   color: var(--ink);
-  background:
-    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.6), transparent 28rem),
-    var(--paper);
+  background: var(--paper);
   font-family: var(--serif);
   font-size: 18px;
   line-height: 1.65;
@@ -206,7 +204,7 @@ h1 em { color: var(--sea); font-weight: 400; }
 
 @media (max-width: 700px) {
   .site-header { margin-top: 0.75rem; }
-  .sailing-lane { height: 3.8rem; }
+  .sailing-lane { height: 4.5rem; }
   .page { padding-block: 4rem; }
   .about-layout { grid-template-columns: 1fr; }
   .portrait { width: min(21rem, 88%); margin-inline: auto; }

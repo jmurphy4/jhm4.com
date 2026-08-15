@@ -15,6 +15,10 @@ pub fn view(
         attribute.attribute("content", "width=device-width, initial-scale=1"),
       ]),
       html.meta([
+        attribute.attribute("name", "theme-color"),
+        attribute.attribute("content", "#f3efe4"),
+      ]),
+      html.meta([
         attribute.attribute("name", "description"),
         attribute.attribute(
           "content",
@@ -103,10 +107,7 @@ fn site_footer() -> Element(Nil) {
     ]),
     html.p([class("footer-mark")], [
       html.text("© "),
-      html.span([attribute.attribute("id", "copyright-year")], [
-        html.text("2026"),
-      ]),
-      html.text(" JM"),
+      html.span([attribute.attribute("id", "copyright-year")], []),
     ]),
   ])
 }
