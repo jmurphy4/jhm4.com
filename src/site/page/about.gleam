@@ -32,7 +32,7 @@ pub fn view() -> Element(Nil) {
           ]),
           html.p([], [
             html.text(
-              "I studied computer science at Georgia Tech. After graduating I went to Washington D.C. then Florida, and I'm now based in Richmond, Virginia. This site is a place to share what I'm working on (eventually), what I'm learning, and random musings.",
+              "I studied computer science at Georgia Tech. After graduating I went to Washington D.C. then Florida, and I'm now based in Richmond, Virginia. This site is a place to share what I'm working on, what I'm learning, and random musings (eventually).",
             ),
           ]),
           html.p([], [

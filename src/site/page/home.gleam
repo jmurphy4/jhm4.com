@@ -16,7 +16,7 @@ pub fn view() -> Element(Nil) {
         ]),
         html.p([attribute.class("lede")], [
           html.text(
-            "This is my small corner of the internet: a place for projects, notes, and ideas worth returning to.",
+            "This is my small corner of the internet: a place for projects, notes, and ideas worth revisting.",
           ),
         ]),
         html.div([attribute.class("home-links")], [
