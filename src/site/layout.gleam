@@ -1,6 +1,7 @@
 import lustre/attribute
 import lustre/element.{type Element}
 import lustre/element/html
+import lustre/element/svg
 
 pub fn view(
   title: String,
@@ -69,6 +70,7 @@ pub fn view(
         attribute.attribute("content", "A sailboat crossing calm blue waves"),
       ]),
       html.title([], title <> " · John Murphy"),
+      html.script([], theme_script),
       html.script([], browser_script),
       html.link([
         attribute.attribute("rel", "icon"),
@@ -119,28 +121,57 @@ fn site_header(active_path: String) -> Element(Nil) {
       html.a(nav_attributes("/", active_path == "/"), [
         html.span([class("site-name")], [html.text("JM")]),
       ]),
-      html.button(
-        [
-          class("menu-toggle"),
-          attribute.attribute("type", "button"),
-          attribute.attribute("id", "menu-toggle"),
-          attribute.attribute("aria-controls", "primary-links"),
-          attribute.attribute("aria-expanded", "false"),
-          attribute.attribute("aria-label", "Open navigation menu"),
-        ],
-        [html.span([], []), html.span([], []), html.span([], [])],
-      ),
       html.div(
         [class("nav-links"), attribute.attribute("id", "primary-links")],
         [
           nav_link("/", "Home", active_path),
-          nav_link("/about/", "About", active_path),
           nav_link("/projects/", "Projects", active_path),
           nav_link("/resume/", "Resume", active_path),
           nav_link("/gear/", "Gear", active_path),
           nav_link("/blog/", "Blog", active_path),
         ],
       ),
+      html.div([class("nav-actions")], [
+        html.button(
+          [
+            class("theme-toggle"),
+            attribute.attribute("type", "button"),
+            attribute.attribute("id", "theme-toggle"),
+            attribute.attribute("aria-label", "Switch color theme"),
+          ],
+          [
+            svg.svg(icon_attributes("theme-icon theme-moon"), [
+              svg.path([
+                attribute.attribute("d", "M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"),
+              ]),
+            ]),
+            svg.svg(icon_attributes("theme-icon theme-sun"), [
+              svg.circle([
+                attribute.attribute("cx", "12"),
+                attribute.attribute("cy", "12"),
+                attribute.attribute("r", "4"),
+              ]),
+              svg.path([
+                attribute.attribute(
+                  "d",
+                  "M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.42",
+                ),
+              ]),
+            ]),
+          ],
+        ),
+        html.button(
+          [
+            class("menu-toggle"),
+            attribute.attribute("type", "button"),
+            attribute.attribute("id", "menu-toggle"),
+            attribute.attribute("aria-controls", "primary-links"),
+            attribute.attribute("aria-expanded", "false"),
+            attribute.attribute("aria-label", "Open navigation menu"),
+          ],
+          [html.span([], []), html.span([], []), html.span([], [])],
+        ),
+      ]),
     ]),
   ])
 }
@@ -167,7 +198,15 @@ fn nav_attributes(
 fn site_footer() -> Element(Nil) {
   html.footer([class("site-footer")], [
     html.p([], [
-      html.text("Built with Gleam, Lustre, and possibly Belgian beer."),
+      html.text("Built with "),
+      html.a([attribute.attribute("href", "https://gleam.run")], [
+        html.text("Gleam"),
+      ]),
+      html.text(", "),
+      html.a([attribute.attribute("href", "https://lustre.hexdocs.pm")], [
+        html.text("Lustre"),
+      ]),
+      html.text(", and possibly Belgian beer."),
     ]),
     html.p([class("footer-mark")], [
       html.text("© "),
@@ -180,10 +219,22 @@ fn class(value: String) -> attribute.Attribute(msg) {
   attribute.class(value)
 }
 
+fn icon_attributes(icon_class: String) -> List(attribute.Attribute(Nil)) {
+  [
+    class(icon_class),
+    attribute.attribute("aria-hidden", "true"),
+    attribute.attribute("viewBox", "0 0 24 24"),
+    attribute.attribute("fill", "none"),
+    attribute.attribute("stroke", "currentColor"),
+    attribute.attribute("stroke-width", "2"),
+    attribute.attribute("stroke-linecap", "round"),
+    attribute.attribute("stroke-linejoin", "round"),
+  ]
+}
+
 fn social_title(title: String, active_path: String) -> String {
   case active_path {
     "/" -> "Murphy's Site"
-    "/about/" -> "About Murphy"
     "/projects/" -> "Murphy's Projects"
     "/resume/" -> "Murphy's Resume"
     "/gear/" -> "Murphy's Gear"
@@ -192,4 +243,6 @@ fn social_title(title: String, active_path: String) -> String {
   }
 }
 
-const browser_script = "try{const key='boat-voyage-start',duration=38000,now=Date.now();let start=Number(sessionStorage.getItem(key));if(!start||start>now){start=now;sessionStorage.setItem(key,String(start))}const elapsed=(now-start)%duration;document.documentElement.style.setProperty('--sail-delay',`${-elapsed}ms`)}catch(_){}document.addEventListener('DOMContentLoaded',()=>{const year=document.getElementById('copyright-year');if(year)year.textContent=String(new Date().getFullYear());const toggle=document.getElementById('menu-toggle'),links=document.getElementById('primary-links');if(toggle&&links){toggle.addEventListener('click',()=>{const open=links.classList.toggle('is-open');toggle.classList.toggle('is-open',open);toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu')})}})"
+const theme_script = "(()=>{const root=document.documentElement,key='site-theme',media=matchMedia('(prefers-color-scheme: dark)');let initial=media.matches?'dark':'light';try{initial=localStorage.getItem(key)||initial}catch(_){}root.dataset.theme=initial;document.addEventListener('DOMContentLoaded',()=>{const button=document.getElementById('theme-toggle'),meta=document.querySelector('meta[name=theme-color]');if(!button)return;const apply=theme=>{root.dataset.theme=theme;try{localStorage.setItem(key,theme)}catch(_){}if(meta)meta.content=theme==='dark'?'#0d1b24':'#f3efe4';button.setAttribute('aria-label',theme==='dark'?'Switch to light mode':'Switch to dark mode')};apply(initial);button.addEventListener('click',()=>{const next=root.dataset.theme==='dark'?'light':'dark',rect=button.getBoundingClientRect(),x=rect.left+rect.width/2,y=rect.top+rect.height/2,radius=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));root.style.setProperty('--theme-x',`${x}px`);root.style.setProperty('--theme-y',`${y}px`);root.style.setProperty('--theme-radius',`${radius}px`);const change=()=>apply(next);if(!document.startViewTransition||matchMedia('(prefers-reduced-motion: reduce)').matches){change();return}document.startViewTransition(change)})})})()"
+
+const browser_script = "try{const key='boat-voyage-start',duration=38000,now=Date.now();let start=Number(sessionStorage.getItem(key));if(!start||start>now){start=now;sessionStorage.setItem(key,String(start))}const elapsed=(now-start)%duration;document.documentElement.style.setProperty('--sail-delay',`${-elapsed}ms`)}catch(_){}document.addEventListener('DOMContentLoaded',()=>{const year=document.getElementById('copyright-year');if(year)year.textContent=String(new Date().getFullYear());const toggle=document.getElementById('menu-toggle'),links=document.getElementById('primary-links');if(toggle&&links){toggle.addEventListener('click',()=>{const open=links.classList.toggle('is-open');toggle.classList.toggle('is-open',open);toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu')})}if(!navigator.connection?.saveData){const prefetched=new Set(),prefetch=anchor=>{const url=new URL(anchor.href);if(url.origin!==location.origin||prefetched.has(url.href))return;prefetched.add(url.href);fetch(url.href,{credentials:'same-origin'}).catch(()=>{})};document.querySelectorAll('a[href]').forEach(anchor=>{anchor.addEventListener('pointerenter',()=>prefetch(anchor),{once:true});anchor.addEventListener('focus',()=>prefetch(anchor),{once:true});anchor.addEventListener('touchstart',()=>prefetch(anchor),{once:true,passive:true})})}})"
