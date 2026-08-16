@@ -125,7 +125,6 @@ fn site_header(active_path: String) -> Element(Nil) {
         [class("nav-links"), attribute.attribute("id", "primary-links")],
         [
           nav_link("/", "Home", active_path),
-          nav_link("/about/", "About", active_path),
           nav_link("/projects/", "Projects", active_path),
           nav_link("/resume/", "Resume", active_path),
           nav_link("/gear/", "Gear", active_path),
@@ -236,7 +235,6 @@ fn icon_attributes(icon_class: String) -> List(attribute.Attribute(Nil)) {
 fn social_title(title: String, active_path: String) -> String {
   case active_path {
     "/" -> "Murphy's Site"
-    "/about/" -> "About Murphy"
     "/projects/" -> "Murphy's Projects"
     "/resume/" -> "Murphy's Resume"
     "/gear/" -> "Murphy's Gear"

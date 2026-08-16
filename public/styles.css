@@ -134,7 +134,12 @@ nav a { text-decoration: none; }
 .menu-toggle span:nth-child(3) { transform: translateY(0.38rem); }
 
 .page { width: min(58rem, calc(100% - 2rem)); margin: 0 auto; padding: clamp(4rem, 10vw, 8rem) 0; }
-.home-page { min-height: 64vh; display: grid; align-items: center; }
+.home-page { width: min(72rem, calc(100% - 2rem)); }
+.home-intro { display: grid; grid-template-columns: minmax(25rem, 1.15fr) minmax(18rem, 0.75fr); gap: clamp(3rem, 8vw, 7rem); min-height: 68vh; align-items: center; scroll-margin-top: 2rem; }
+.intro-copy { max-width: 48rem; }
+.home-portrait { width: min(23rem, 100%); margin-inline: auto; }
+.personal-note { max-width: 38rem; margin: 1.25rem 0 0; color: var(--ink-soft); }
+.personal-note a { color: var(--sea); }
 .intro { max-width: 50rem; }
 .eyebrow { margin: 0 0 1.2rem; color: var(--sea); font-family: var(--sans); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; }
 h1 { max-width: 18ch; margin: 0; font-size: clamp(2.8rem, 8vw, 5.8rem); font-weight: 400; letter-spacing: -0.035em; line-height: 1.06; }
@@ -262,6 +267,11 @@ h1 em { color: var(--sea); font-weight: 400; }
 @keyframes wake {
   0%, 100% { transform: translateX(0) scaleX(0.86); opacity: 0.42; }
   50% { transform: translateX(-0.18rem) scaleX(1.08); opacity: 0.82; }
+}
+
+@media (max-width: 950px) {
+  .home-intro { grid-template-columns: 1fr; min-height: auto; }
+  .home-portrait { width: min(22rem, 80%); }
 }
 
 @media (max-width: 700px) {
